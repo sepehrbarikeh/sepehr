@@ -77,6 +77,9 @@ const LandingShutter = ({ onEnter, hide }: { onEnter: () => void, hide: boolean 
 };
 
 const Home = () => {
+
+  console.log(navigator)
+
   const [showLanding, setShowLanding] = useState(true);
   const [hideLanding, setHideLanding] = useState(false);
   const mainRef = useRef<HTMLDivElement>(null);
