@@ -1,7 +1,7 @@
 import UserNav from "@/app/components/client/userNav"
 import UserPanel from "@/app/components/client/userPanel"
 import { CheckIcon, ClockIcon, QuestionMarkCircleIcon, XMarkIcon as XMarkIconMini } from '@heroicons/react/20/solid'
-
+import Image from "next/image"
 
 const products = [
     {
@@ -97,7 +97,7 @@ const ShopCart = () => {
                                 {products.map((product, productIdx) => (
                                     <li key={product.id} className="flex py-6 sm:py-10">
                                         <div className="flex-shrink-0">
-                                            <img
+                                            <Image
                                                 src={product.imageSrc}
                                                 alt={product.imageAlt}
                                                 className="h-24 w-24 rounded-md object-cover object-center sm:h-48 sm:w-48"
@@ -228,7 +228,7 @@ const ShopCart = () => {
                             {relatedProducts.map((relatedProduct) => (
                                 <div key={relatedProduct.id} className="group relative">
                                     <div className="min-h-80 aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md lg:aspect-none group-hover:opacity-75 lg:h-80">
-                                        <img
+                                        <Image
                                             src={relatedProduct.imageSrc}
                                             alt={relatedProduct.imageAlt}
                                             className="h-full w-full object-cover object-center lg:h-full lg:w-full"
@@ -262,7 +262,7 @@ const ShopCart = () => {
                             <div key={incentive.name} className="text-center sm:flex sm:text-left lg:block lg:text-center">
                                 <div className="sm:flex-shrink-0">
                                     <div className="flow-root">
-                                        <img className="mx-auto h-24 w-28" src={incentive.imageSrc} alt="" />
+                                        <Image className="mx-auto h-24 w-28" src={incentive.imageSrc} alt="" />
                                     </div>
                                 </div>
                                 <div className="mt-3 sm:ml-3 sm:mt-0 lg:ml-0 lg:mt-3">

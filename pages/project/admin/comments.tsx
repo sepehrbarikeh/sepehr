@@ -99,7 +99,7 @@ const Comments = () => {
         <>
             <SidebarLayout />
             <ul role="list" className={`grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 pt-4 px-4 dark:bg-slate-800 lg:absolute lg:right-72`}>
-               {CommentData.map((data) => <CommentCart item={data} /> )} 
+               {CommentData.map((data) => <CommentCart key={data.id} item={data} /> )} 
             </ul>
             
         </>

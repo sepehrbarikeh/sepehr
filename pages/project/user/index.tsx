@@ -1,5 +1,6 @@
 import UserNav from "@/app/components/client/userNav"
 import UserPanel from "@/app/components/client/userPanel"
+import Image from "next/image"
 
 const offers = [
     { name: 'Download the app', description: 'Get an exclusive $5 off code', href: '#' },
@@ -148,7 +149,7 @@ const User = () => {
                                 </div>
                             </div>
                             <div className="h-48 w-full sm:h-64 lg:absolute lg:left-0 lg:top-0 lg:h-full lg:w-1/2">
-                                <img
+                                <Image
                                     src="https://tailwindui.com/img/ecommerce-images/home-page-02-hero-half-width.jpg"
                                     alt=""
                                     className="h-full w-full object-cover object-center"
@@ -180,7 +181,7 @@ const User = () => {
                                             <li key={product.id} className="inline-flex w-64 mx-1 flex-col text-center lg:w-auto">
                                                 <div className="group relative">
                                                     <div className="aspect-h-1 h-72 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200">
-                                                        <img
+                                                        <Image
                                                             src={product.imageSrc}
                                                             alt={product.imageAlt}
                                                             className="h-full w-full object-cover object-center group-hover:opacity-75"
@@ -237,7 +238,7 @@ const User = () => {
                                     {collections.map((collection) => (
                                         <div key={collection.name} className="group relative">
                                             <div className="relative h-80 w-full overflow-hidden rounded-lg bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75 sm:h-64">
-                                                <img
+                                                <Image
                                                     src={collection.imageSrc}
                                                     alt={collection.imageAlt}
                                                     className="h-full w-full object-cover object-center"
@@ -262,7 +263,7 @@ const User = () => {
                         {/* Decorative background image and gradient */}
                         <div aria-hidden="true" className="absolute inset-0">
                             <div className="absolute inset-0 mx-auto max-w-7xl overflow-hidden xl:px-8">
-                                <img
+                                <Image
                                     src="https://tailwindui.com/img/ecommerce-images/home-page-02-sale-full-width.jpg"
                                     alt=""
                                     className="h-full w-full object-cover object-center"
@@ -431,7 +432,7 @@ const User = () => {
 
                                 <div className="relative mt-6 flex items-center px-6 py-12 sm:px-10 sm:py-16 lg:mt-0">
                                     <div className="absolute inset-0 overflow-hidden rounded-lg">
-                                        <img
+                                        <Image
                                             src="https://tailwindui.com/img/ecommerce-images/footer-02-exclusive-sale.jpg"
                                             alt=""
                                             className="h-full w-full object-cover object-center saturate-0 filter"

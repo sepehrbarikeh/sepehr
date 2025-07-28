@@ -1,5 +1,6 @@
 import UserNav from "@/app/components/client/userNav"
 import UserPanel from "@/app/components/client/userPanel"
+import Image from "next/image"
 
 const orders = [
     {
@@ -155,7 +156,7 @@ const Order = () => {
                                                 <tr key={product.id}>
                                                     <td className="py-6 pl-8">
                                                         <div className="flex items-center">
-                                                            <img
+                                                            <Image
                                                                 src={product.imageSrc}
                                                                 alt={product.imageAlt}
                                                                 className="ml-6 h-16 w-16 rounded object-cover object-center"

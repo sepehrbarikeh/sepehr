@@ -2,6 +2,7 @@ import SidebarLayout from "@/app/components/admin/layout/sidebarLayout";
 import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { EllipsisVerticalIcon } from '@heroicons/react/20/solid'
+import Image from "next/image";
 
 const people = [
     {
@@ -203,7 +204,7 @@ const Users = () => {
                     {people.map((person) => (
                         <li key={person.email} className="flex justify-between gap-x-6 py-5">
                             <div className="flex gap-x-4">
-                                <img className="h-12 w-12 flex-none rounded-full bg-gray-50" src={person.imageUrl} alt="" />
+                                <Image className="h-12 w-12 flex-none rounded-full bg-gray-50" src={person.imageUrl} alt="" />
                                 <div className="min-w-0 flex-auto">
                                     <p className="text-sm font-semibold leading-6 text-gray-900">
                                         {person.name}

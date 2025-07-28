@@ -19,7 +19,7 @@ const UserNav = () => {
                             <div className="flex px-2 lg:px-0">
                                 <div className="flex flex-shrink-0 items-center">
                                     <div className="inline-flex items-center px-1 pt-1 text-base font-medium text-gray-900">
-                                        "وبسایت شما"
+                                        وبسایت شما
                                     </div>
                                 </div>
                             </div>

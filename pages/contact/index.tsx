@@ -19,7 +19,7 @@ const Contact = () => {
                     <a href="https://github.com/sepehrbarike" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 bg-white dark:bg-slate-800 rounded-xl shadow hover:bg-sky-50 dark:hover:bg-slate-700 transition text-sky-700 dark:text-sky-300 font-bold text-lg">
                         <Github className="w-7 h-7" /> گیت‌هاب
                     </a>
-                    <a href="https://linkedin.com/in/your-linkedin" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 bg-white dark:bg-slate-800 rounded-xl shadow hover:bg-sky-50 dark:hover:bg-slate-700 transition text-sky-700 dark:text-sky-300 font-bold text-lg">
+                    <a href="https://www.linkedin.com/in/sepehr-barike-9bb9242a9?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 bg-white dark:bg-slate-800 rounded-xl shadow hover:bg-sky-50 dark:hover:bg-slate-700 transition text-sky-700 dark:text-sky-300 font-bold text-lg">
                         <Linkedin className="w-7 h-7" /> لینکدین
                     </a>
                     <a href="https://t.me/srbe_sepehr" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 bg-white dark:bg-slate-800 rounded-xl shadow hover:bg-sky-50 dark:hover:bg-slate-700 transition text-sky-700 dark:text-sky-300 font-bold text-lg">
