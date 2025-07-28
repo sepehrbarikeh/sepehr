@@ -1,0 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@font-face {
+  font-family:'vazir';
+  src: url(../public/font/Vazir.ttf),
+  url(../public/font/Vazir.woff),
+  url(../public/font/Vazir.woff2);
+}
+
+@font-face {
+  font-family:'vazir-bold';
+  src: url(../public/font/Vazir-Bold.ttf),
+  url(../public/font/Vazir-Bold.woff),
+  url(../public/font/Vazir-Bold.woff2);
+}
+
+:root {
+  direction: rtl;
+}
+
+.mySwiper{
+  height: 18rem;
+}
+
+/* Swiper custom styles */
+.mySwiper {
+  height: 18rem;
+}
+.swiper-button-next, .swiper-button-prev {
+  background: rgba(255,255,255,0.85);
+  border-radius: 9999px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  color: #0ea5e9;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+  border: 1.5px solid #e0e7ef;
+}
+.swiper-button-next:hover, .swiper-button-prev:hover {
+  background: #0ea5e9;
+  color: #fff;
+  transform: scale(1.08);
+  border-color: #0ea5e9;
+}
+.swiper-button-disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.swiper-pagination-bullet {
+  background: #38bdf8;
+  opacity: 0.5;
+  transition: opacity 0.2s;
+}
+.swiper-pagination-bullet-active {
+  background: #0ea5e9;
+  opacity: 1;
+}
+.swiper-slide {
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+@media (prefers-color-scheme: dark) {
+  .swiper-button-next, .swiper-button-prev {
+    background: rgba(30,41,59,0.85);
+    color: #38bdf8;
+    border: 1.5px solid #334155;
+  }
+  .swiper-button-next:hover, .swiper-button-prev:hover {
+    background: #0ea5e9;
+    color: #fff;
+    border-color: #0ea5e9;
+  }
+  .swiper-pagination-bullet {
+    background: #38bdf8;
+  }
+  .swiper-pagination-bullet-active {
+    background: #0ea5e9;
+  }
+}
+
+/* 
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Moving underline from right to left */
+@keyframes moving-underline {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  45% {
+    transform: translateX(0%);
+  }
+  55% {
+    transform: translateX(0%);
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+.animate-moving-underline {
+  position: relative;
+}
+
+.animate-moving-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(to right, transparent, #0ea5e9, transparent);
+  animation: moving-underline 4s ease-in-out infinite;
+}
