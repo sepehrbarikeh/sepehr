@@ -27,7 +27,7 @@ const Footer = () => {
                 <div>
                     <h3 className="text-lg font-bold mb-4" style={{ fontFamily: 'vazir-bold' }}>شبکه‌های اجتماعی</h3>
                     <div className="flex gap-6 text-2xl">
-                        <a href="https://github.com/sepehrbarike" target="_blank" rel="noopener noreferrer" className="hover:text-sky-400"><Github className="w-7 h-7" /></a>
+                        <a href="https://github.com/sepehrbarikeh" target="_blank" rel="noopener noreferrer" className="hover:text-sky-400"><Github className="w-7 h-7" /></a>
                         <a href="https://www.linkedin.com/in/sepehr-barike-9bb9242a9?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" rel="noopener noreferrer" className="hover:text-sky-400"><Linkedin className="w-7 h-7" /></a>
                         <a href="https://t.me/srbe_sepehr" target="_blank" rel="noopener noreferrer" className="hover:text-sky-400"><MessageCircle className="w-7 h-7" /></a>
                     </div>
