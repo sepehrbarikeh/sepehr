@@ -30,6 +30,22 @@ const Nav = () => {
     }
   }, [darkMode]);
 
+  const [width, setWidth] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.body.scrollHeight - window.innerHeight;
+      const scrolled = (scrollTop / docHeight) * 100;
+      setWidth(scrolled);
+
+    };
+
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <header className="sticky top-4 z-50 w-full max-w-6xl mx-auto px-2 md:px-6">
       <Disclosure as="nav" className="backdrop-blur-md bg-white/70 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-lg">
@@ -138,6 +154,12 @@ const Nav = () => {
                 ))}
               </nav>
             </Disclosure.Panel>
+            <div className=" fixed top-0 left-0 w-full h-1  bg-transparent z-50">
+              <div
+                className="h-full rounded-full bg-sky-500 transition-colors duration-300"
+                style={{ width: `${width}%` }}
+              />
+            </div>
           </>
         )}
       </Disclosure>

@@ -46,24 +46,24 @@ const LandingShutter = ({ onEnter, hide }: { onEnter: () => void, hide: boolean 
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-sky-300/20 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-300/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
       </div>
-      
+
       <div className="flex flex-col items-center justify-center text-center relative z-10">
-        <Image 
-          src="/image/main2.svg" 
+        <Image
+          src="/image/main2.svg"
           width={320}
           height={320}
-          alt="Landing Illustration" 
+          alt="Landing Illustration"
           className="w-64 h-64 md:w-80 md:h-80 mb-6 drop-shadow-lg animate-gentle-float"
         />
-        
+
         <h1 className="text-4xl md:text-6xl font-extrabold text-sky-600 dark:text-sky-300 mb-4 leading-tight py-2 animate-moving-underline" style={{ fontFamily: 'vazir-bold', lineHeight: '1.2' }}>
           شروع یک تجربه جدید!
         </h1>
-        
+
         <p className="text-lg md:text-2xl text-gray-700 dark:text-gray-200 mb-8 max-w-2xl leading-relaxed" style={{ fontFamily: 'vazir' }}>
           اسکرول کن یا روی دکمه زیر بزن تا وارد سایت بشی و همه بخش‌های جذاب رو ببینی.
         </p>
-        
+
         <button
           onClick={onEnter}
           className="group flex flex-col items-center gap-3 px-10 py-5 bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 text-white text-xl font-bold rounded-full shadow-2xl transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-sky-300 dark:focus:ring-sky-700 transform hover:scale-105 hover:shadow-3xl"
@@ -78,7 +78,6 @@ const LandingShutter = ({ onEnter, hide }: { onEnter: () => void, hide: boolean 
 
 const Home = () => {
 
-  console.log(navigator)
 
   const [showLanding, setShowLanding] = useState(true);
   const [hideLanding, setHideLanding] = useState(false);
