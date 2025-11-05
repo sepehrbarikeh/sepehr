@@ -10,7 +10,7 @@ export const ProjectData = [
         id : 1,
         Image : weather,
         title : " برنامه اب و هوا",
-        link: "https://weather-app-puce-eight-47.vercel.app/login",
+        link: "https://weather-app-puce-eight-47.vercel.app",
         category : 'توسعه وب'
     },
      {
@@ -51,3 +51,4 @@ export const ProjectData = [
     },
 
 ]
+
