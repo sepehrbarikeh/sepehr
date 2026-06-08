@@ -6,6 +6,8 @@ import FloatingWords from "./floatingWords";
 import CoffeeSteam from "./coffeeSteam";
 import { useMouseParallax } from "./useMouseParallax";
 import Image from "next/image";
+import background from "@/public/image/background.png"
+import hand from "@/public/image/hand.png"
 
 export default function DeveloperScene() {
   const sceneRef = useRef<HTMLDivElement>(null);
@@ -60,7 +62,7 @@ export default function DeveloperScene() {
         <Image
           width={1200}
           height={864}
-          src="/background.png"
+          src={background}
           alt="Developer Artwork"
           className="w-full h-full object-contain select-none will-change-transform"
         />
@@ -110,7 +112,7 @@ export default function DeveloperScene() {
           width={1200}
           height={864}
           ref={handRef}
-          src="/hand.png"
+          src={hand}
           alt="Animated Hand"
           className="absolute top-0 left-0 w-full h-full object-contain select-none z-10"
         />
