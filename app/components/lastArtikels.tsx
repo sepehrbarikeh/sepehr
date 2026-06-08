@@ -7,7 +7,6 @@ import ModernSlider from "./shared/ModernSlider";
 import { Data } from "./articles/article";
 import Cart from "./articles/cart";
 import Link from "next/link";
-import { ListChecks } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
