@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import heroImage from "@/public/hero-image.png";
+import heroImage from "@/public/heroImage.png";
 import IntroText from "./introText";
 import Image from "next/image";
 
