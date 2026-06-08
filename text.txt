@@ -1,0 +1,308 @@
+چند تا کار باید انجام بدیم 
+۱-اول نوبار ریپانسیو بشه
+۲-تو هیروسکشن اسکرول رو خوب قفل کردی باید گاری بکنیم تا اسکرول فقله نوبار هم معمولی باشه
+۳-بانداژ اماده برای پروژه دیده نمیشه به خاطر اندازه متن ها
+۴- هیرو سکشن تماما رسپانسیو بشه
+۵-حتی میتونیم متن های اینترو هم با انیمیشن بیاریم
+
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
+const NAV_ITEMS = ["Home", "About", "Projects", "Skills", "Experience", "Contact"];
+
+export default function Navbar() {
+  const [activeItem, setActiveItem] = useState("Home");
+  const navContainerRef = useRef<HTMLDivElement>(null);
+  const navInnerRef = useRef<HTMLElement>(null);
+  const indicatorRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // حالت اولیه: ناوبار کاملاً پنهان و در بالای صفحه
+    gsap.set(navContainerRef.current, { y: -100, opacity: 0 });
+
+    const ctx = gsap.context(() => {
+      
+      // انیمیشن اول: ورود ناوبار به صورت تمام‌عرض دقیقاً در پایان لندینگ پیج (280vh)
+      ScrollTrigger.create({
+        trigger: document.body,
+        // محاسبات دقیق: ۲.۸ برابر ارتفاع مانیتور منهای ۱۰۰ پیکسل برای ورود نرم‌تر
+        start: () => `top -${(window.innerHeight * 2.8) - 100}px`, 
+        onEnter: () => {
+          gsap.to(navContainerRef.current, {
+            y: 0,
+            opacity: 1,
+            duration: 0.4,
+            ease: "power2.out",
+          });
+        },
+        onLeaveBack: () => {
+          // وقتی کاربر به داخل لندینگ پیج برمی‌گردد، ناوبار دوباره پنهان شود
+          gsap.to(navContainerRef.current, {
+            y: -100,
+            opacity: 0,
+            duration: 0.3,
+            ease: "power2.in",
+          });
+        }
+      });
+
+      // انیمیشن دوم: تبدیل ناوبار تمام‌عرض به کپسول (کمی بعد از وارد شدن ناوبار)
+      gsap.to(navInnerRef.current, {
+        maxWidth: "1024px",              // جمع شدن از عرض
+        marginTop: "16px",               // فاصله از سقف
+        borderRadius: "9999px",          // کپسولی شدن
+        backgroundColor: "rgba(10, 10, 12, 0.85)", // شیشه‌ای شدن
+        backdropFilter: "blur(16px)",
+        paddingLeft: "32px",
+        paddingRight: "32px",
+        boxShadow: "0 10px 30px rgba(0, 0, 0, 0.5)",
+        borderColor: "rgba(255, 255, 255, 0.08)",
+        duration: 0.35,
+        scrollTrigger: {
+          trigger: document.body,
+          // شروع کپسول شدن: ۱۵۰ پیکسل بعد از اینکه کاملاً لندینگ ۲.۸ را رد کردیم
+          start: () => `top -${(window.innerHeight * 2.8) + 150}px`, 
+          toggleActions: "play none none reverse", // برگشت به بالا = تبدیل دوباره به حالت تخت و تمام‌عرض
+        }
+      });
+
+    }, navContainerRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  // انیمیشن سُر خوردن خط بنفش زیر منوها
+  const handleItemClick = (item: string, e: React.MouseEvent<HTMLButtonElement>) => {
+    setActiveItem(item);
+    const target = e.currentTarget;
+    if (indicatorRef.current) {
+      gsap.to(indicatorRef.current, {
+        x: target.offsetLeft,
+        width: target.offsetWidth,
+        duration: 0.35,
+        ease: "power2.out"
+      });
+    }
+  };
+
+  return (
+    <div ref={navContainerRef} className="fixed top-0 left-0 right-0 z-50 w-full px-0 transition-all duration-300">
+      <nav
+        ref={navInnerRef}
+        className="mx-auto flex w-full max-w-7xl items-center justify-between border-b border-white/5 bg-[#0a0a0c]/90 py-5 px-6 md:px-12 transition-all duration-300"
+      >
+        {/* لوگو */}
+        <div className="flex items-center space-x-2 space-x-reverse text-lg font-bold text-white select-none">
+          <span className="text-purple-500 font-mono">{"</>"}</span>
+          <span className="tracking-tight">Sepehr</span>
+        </div>
+
+        {/* منوها */}
+        <div className="relative hidden items-center space-x-1 space-x-reverse md:flex">
+          {NAV_ITEMS.map((item) => (
+            <button
+              key={item}
+              onClick={(e) => handleItemClick(item, e)}
+              className={`px-4 py-2 text-sm font-medium transition-colors duration-300 ${
+                activeItem === item ? "text-white" : "text-zinc-400 hover:text-zinc-200"
+              }`}
+            >
+              {item}
+            </button>
+          ))}
+          <div ref={indicatorRef} className="absolute bottom-0 h-[2px] bg-purple-500 rounded-full" style={{ left: "16px", width: "42px" }} />
+        </div>
+
+        {/* دکمه‌ها */}
+        <div className="flex items-center space-x-4 space-x-reverse">
+          
+          <button className="rounded-xl bg-purple-600 px-5 py-2 text-sm font-semibold text-white shadow-[0_4px_20px_rgba(147,51,234,0.3)] transition-all duration-300 hover:scale-105 hover:bg-purple-500">
+          Let's Talk
+          </button>
+        </div>
+      </nav>
+    </div>
+  );
+}
+
+"use client";
+
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import heroImage from "@/public/hero-image.png";
+import IntroText from "./introText";
+import Image from "next/image";
+
+gsap.registerPlugin(ScrollTrigger);
+
+export default function HeroSection() {
+    // ۱. فقط یک رفرنس برای کل سکشن می‌سازیم
+    const mainContainerRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        // ۲. با پاس دادن mainContainerRef به عنوان آرگومان دوم gsap.context، مکانیزم Scope فعال می‌شود
+        const ctx = gsap.context(() => {
+
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: mainContainerRef.current,
+                    start: "top top",
+                    end: "bottom bottom",
+                    scrub: 1.2,
+                },
+            });
+
+            // ۳. حالا خیلی شیک و راحت از کلاس‌های معمولی CSS استفاده می‌کنیم!
+            tl.fromTo(".hero-text", // به جای رفرنس، کلاس دادیم
+                { x: -300, opacity: 0 },
+                { x: 0, opacity: 1, ease: "power2.out" },
+                0
+            )
+                .fromTo(".hero-media",
+                    { x: 300, opacity: 0, scale: 0.9 },
+                    { x: 0, opacity: 1, scale: 1, ease: "power2.out" },
+                    0
+                )
+                .to(".scroll-down", {
+                    opacity: 1,
+                    y: 20,
+                    duration: 0.2
+                }, 0.1);
+
+        }, mainContainerRef); // 👈 این همان جادوی Scope است
+
+        return () => ctx.revert();
+    }, []);
+
+    return (
+        <section
+            id="hero-section"
+            ref={mainContainerRef} // رفرنس مادر
+            className="relative h-[280vh] w-full bg-[#00000c]"
+        >
+            <div className="sticky top-0 flex h-screen w-full flex-col items-center justify-center overflow-hidden px-6 lg:flex-row lg:px-16">
+
+                <div className="hero-media mt-12 flex w-full items-center justify-center lg:mt-0 lg:w-1/2">
+                    <Image src={heroImage} alt="Hero Image" />
+                </div>
+                {/* متن‌ها (فقط کلاس hero-text را به آن دادیم) */}
+                <div className="hero-text max-w-2xl text-center text-white lg:text-left">
+                    <IntroText />
+                </div>
+                {/* دکمه اسکرول (کلاس scroll-down) */}
+                <div className="scroll-down absolute bottom-8 left-6 flex items-center space-x-2 space-x-reverse text-xs text-zinc-500 font-mono select-none md:left-16">
+                    <span>Scroll Down</span>
+                    <span className="animate-bounce">↓</span>
+                </div>
+
+            </div>
+        </section>
+    );
+}
+
+"use client";
+
+import { ArrowLeft } from "lucide-react";
+
+export default function IntroText() {
+  return (
+    // استفاده از dir="rtl"، فونت‌های متناسب، و اعمال فاصله‌های عمودی هوشمند (space-y)
+    <div dir="rtl" className="relative z-20 flex max-w-[640px] flex-1 flex-col text-right font-sans space-y-8 select-none">
+      
+      {/* بچ وضعیت: افزایش پدینگ و خوانایی جذاب‌تر با افکت شیشه‌ای */}
+      <div className="landing-badge w-fit rounded-full border border-emerald-500/20 bg-emerald-500/10 px-5 py-2.5 backdrop-blur-md shadow-[0_0_20px_rgba(16,185,129,0.1)]">
+        <span className="text-xs md:text-sm font-semibold tracking-wide text-emerald-400">
+          در دسترس برای پروژه‌
+        </span>
+      </div>
+
+      {/* تیتر اصلی: ادبیات مقتدرانه، ضخامت بالا (font-black) و اصلاح فاصله خطوط برای زبان فارسی */}
+      <h1 className="landing-title text-[38px] font-black leading-[1.3] text-white md:text-[62px] lg:text-[68px]">
+        معماری و توسعه‌ی
+        <br />
+        رابط‌های وب ممتاز
+        <br />
+        با <span className="bg-gradient-to-r from-blue-400 via-indigo-400 to-violet-500 bg-clip-text text-transparent drop-shadow-[0_2px_10px_rgba(99,102,241,0.2)]">
+          کدنویسی پاک و استاندارد.
+        </span>
+      </h1>
+
+      {/* زیرعنوان: روان، جذاب و با فاصله خطوط باز (leading-relaxed) برای خسته نشدن چشم */}
+      <p className="landing-subtitle max-w-[580px] text-base leading-8 text-zinc-400 md:text-lg md:leading-9">
+        من یک مهندس فرانت‌اند هستم که تمرکزم روی خلق وب‌سایت‌های فوق‌العاده سریع، 
+        تعاملی و با جزئیات بصری خیره‌کننده است؛ جایی که ظرافت هنر طراحی با منطقِ 
+        مدرن‌ترین تکنولوژی‌های روز دنیای وب ترکیب می‌شود.
+      </p>
+
+      {/* دکمه‌ها: افزایش فاصله از متن بالا (pt-4) و افزایش پدینگ داخلی برای حس لوکس بودن بیشتر */}
+      <div className="landing-buttons pt-4 flex flex-wrap gap-5">
+        <div className="landing-buttons mt-10 flex flex-wrap gap-4">
+        <button className="group flex items-center gap-2 rounded-2xl bg-indigo-500 px-7 py-4 font-semibold text-white transition-all hover:bg-indigo-600 hover:scale-105">
+          مشاهده پروژه‌ها
+          <ArrowLeft
+            size={18}
+            className="transition-transform duration-300 group-hover:-translate-x-1" // حرکت فلش به سمت چپ در زبان فارسی
+          />
+        </button>
+
+        <button className="rounded-2xl border border-white/10 bg-white/[0.03] px-7 py-4 font-medium text-white backdrop-blur-xl transition-all hover:bg-white/[0.07]">
+          ارتباط با من
+        </button>
+      </div>
+      </div>
+    </div>
+  );
+}
+
+
+
+
+
+
+<div className="group relative overflow-hidden rounded-3xl border border-white/10 bg-zinc-950 p-6 transition-all duration-300 hover:border-white/20 hover:bg-zinc-900">
+  {/* Glow */}
+  <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] via-transparent to-transparent opacity-0 transition duration-500 group-hover:opacity-100" />
+
+  {/* Content */}
+  <div className="relative z-10 flex h-full flex-col justify-between">
+    <div>
+      <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-white/5 ring-1 ring-white/10">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-7 w-7 text-white"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={1.8}
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M13 7h6m0 0v6m0-6L10 16"
+          />
+        </svg>
+      </div>
+
+      <h3 className="text-xl font-semibold text-white">
+        مشاهده همه
+      </h3>
+
+      <p className="mt-2 text-sm leading-6 text-zinc-400">
+        همه آیتم‌ها رو ببین و بیشتر بررسی کن.
+      </p>
+    </div>
+
+    <button className="mt-8 flex items-center gap-2 text-sm font-medium text-zinc-200 transition group-hover:text-white">
+      مشاهده
+      <span className="transition-transform duration-300 group-hover:translate-x-1">
+        →
+      </span>
+    </button>
+  </div>
+</div>
