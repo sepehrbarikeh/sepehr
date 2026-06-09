@@ -47,7 +47,6 @@ const AboutUs = () => {
         <>
             <Nav />
             <div ref={containerRef} className="min-h-screen bg-[#03030f] mt-16 text-zinc-300 py-16 px-4 md:px-8 border-t border-white/[0.01]">
-                
                 {/* باکس اصلی شیشه‌ای رزومه */}
                 <section dir="rtl" className="about-anim w-full max-w-4xl mx-auto bg-white/[0.01] backdrop-blur-xl border border-white/[0.04] rounded-3xl p-6 md:p-10 shadow-[0_0_50px_rgba(0,0,0,0.3)] mb-12">
                     
@@ -72,7 +71,7 @@ const AboutUs = () => {
                                 <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-2 mb-4">
                                     <div>
                                         <h3 className="text-white font-bold text-base" style={{ fontFamily: 'vazir-bold' }}>توسعه‌دهنده فرانت‌اند</h3>
-                                        <span className="text-purple-400 text-sm font-medium">شرکت X Code (تبریز)</span>
+                                        <span className="text-purple-400 text-sm font-medium">شرکت Q Code (تبریز)</span>
                                     </div>
                                     <span className="text-xs bg-purple-500/10 text-purple-400 border border-purple-500/20 px-3 py-1 rounded-full font-medium">
                                         از آذر ۱۴۰۲ تا کنون
